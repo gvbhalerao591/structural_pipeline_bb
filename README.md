@@ -9,7 +9,7 @@ bash bb_struct_init <subject_folder> <coefficients_file>
 This script processes T1-weighted MRI data, performing gradient distortion correction (if provided), brain extraction, tissue segmentation, non-linear registration to MNI space, and subcortical structure segmentation.
 
 ### Arguments:
-1) subject_folder        : The path to the subject's folder, which must contain a T1-weighted image.
+1) subject_folder        : The path to the subject's folder, which must contain a T1-weighted image. (organisation: subjects folder >> T1 >> T1.nii.gz)
 2) coefficients_file     : The coefficients file for Gradient Distortion Correction (GDC). Set to "none" if distortion correction is not required.
 
 ### Required Tools: 

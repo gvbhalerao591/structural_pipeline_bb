@@ -14,6 +14,7 @@ This script processes T1-weighted MRI data, performing gradient distortion corre
 
 ### Required Tools: 
 FSL (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/)
+Gradunwarp (https://git.fmrib.ox.ac.uk/fsl/gradunwarp) - needed if GDC is enabled
 
 ### Notes:
 - Ensure that the paths to FSL and bb_pipeline binaries are correctly set in your environment.

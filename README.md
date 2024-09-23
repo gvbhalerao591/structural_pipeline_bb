@@ -13,18 +13,19 @@ This script processes T1-weighted MRI data, performing gradient distortion corre
 2) coefficients_file     : The coefficients file for Gradient Distortion Correction (GDC). Set to "none" if distortion correction is not required.
 
 ### Required Tools: 
-FSL (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/)
+- FSL (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/)
+- Gradunwarp (https://git.fmrib.ox.ac.uk/fsl/gradunwarp) - if GDC correction required
 
 ### Notes:
 - Ensure that the paths to FSL and bb_pipeline binaries are correctly set in your environment.
 - The coefficients file for GDC should come from the scanner or other calibration source. If no correction is needed, simply pass "none" as the second argument.
----
+
 ### Example:
 ```
 bash main_processT1 /path/to/subject_folder /path/to/coefficients/file
 bash main_processT1 /path/to/subject_folder none  # Skips GDC if "none" is provided
 ```
-### Output:
+### Outputs:
 Saved in /path/to/subject_folder/IDP_files
 - bb_IDP_T1_FIRST_vols (not normalised)
 - bb_IDP_T1_SIENAX

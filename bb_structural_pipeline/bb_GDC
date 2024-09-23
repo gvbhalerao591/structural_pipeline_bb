@@ -78,7 +78,7 @@ ${FSLDIR}/bin/fslroi ${InputFile} $WD/${BaseName}_vol1.nii.gz 0 1
 InputCoeffs=`$BB_BIN_DIR/bb_pipeline_tools/bb_fsl_abspath $InputCoefficients`
 ORIGDIR=`pwd`
 cd $WD
-. $BB_BIN_DIR/bb_python/bb_python_gradunwarp/bin/activate
+#. $BB_BIN_DIR/bb_python/bb_python_gradunwarp/bin/activate
 $BB_BIN_DIR/bb_pipeline_tools/bb_gradient_unwarp.py ${BaseName}_vol1.nii.gz trilinear.nii.gz siemens -g $InputCoeffs -n
 deactivate
 cd $ORIGDIR

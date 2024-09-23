@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Check if the subject folder is passed as an argument
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 <subject_folder>"
+  exit 1
+fi
+
+subject_folder=$1
+idp_path="${subject_folder}/IDP_files"
+first_file="${idp_path}/bb_IDP_T1_FIRST_vols.txt"
+sienax_file="${idp_path}/bb_IDP_T1_SIENAX.txt"
+output_file="${idp_path}/bb_IDP_T1_FIRST-norm_vols.txt"
+
+# Check if the necessary files exist
+if [[ ! -f "$first_file" || ! -f "$sienax_file" ]]; then
+  echo "Error: Required files FIRST_vols.txt or SIENAX_vols.txt not found in $idp_path"
+  exit 1
+fi
+
+# Read the first value from SIENAX_vols.txt
+sienax_value=$(awk '{print $1}' "$sienax_file")
+
+# Read the values from FIRST_vols.txt, multiply by sienax_value, and save to FIRST_norm.txt
+awk -v sienax="$sienax_value" '{for(i=1;i<=NF;i++) printf "%.6f ", $i * sienax; printf "\n"}' "$first_file" > "$output_file"
+
+echo "Normalized values saved to $output_file"
+

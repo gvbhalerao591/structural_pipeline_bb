@@ -148,3 +148,8 @@ fslmaths T1_first/T1_first_all_fast_firstseg.nii.gz -thr 52.5 -uthr 53.5 -bin T1
 #Run Siena
 $BB_BIN_DIR/bb_structural_pipeline/bb_sienax `pwd`/..
 
+#Get IDPs
+$BB_BIN_DIR/bb_structural_pipeline/bb_IDP_T1_FIRST_vols $1
+$BB_BIN_DIR/bb_structural_pipeline/bb_IDP_T1_SIENAX $1
+$BB_BIN_DIR/bb_structural_pipeline/bb_IDP_T1_norm_FIRST_vols $1
+

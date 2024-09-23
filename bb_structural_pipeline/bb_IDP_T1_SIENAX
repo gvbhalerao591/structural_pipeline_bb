@@ -1,0 +1,37 @@
+#!/bin/sh
+
+origDir=`pwd`
+scriptName=`basename "$0"`
+direc=$1
+
+cd $direc
+
+baseT1="T1"
+#if [ -d T1/unusable ] ; then
+#    baseT1="T1/unusable"
+#fi
+
+#Setting the string of NaN in case there is a problem.
+numVars="11"
+result="";
+for i in $(seq 1 $numVars) ; do 
+    result="NaN $result" ; 
+done 
+
+
+if [ ! -f $baseT1/T1_sienax/T1_sienax.txt ] && [ -f $baseT1/T1_sienax/report.sienax ] ; then
+  echo `cat $baseT1/T1_sienax/report.sienax` | cut -d " " -f2,7,8,12,13,17,18,20,21,23,24 > $baseT1/T1_sienax/T1_sienax.txt
+  result=`cat $baseT1/T1_sienax/T1_sienax.txt` 
+
+elif [ -f $baseT1/T1_sienax/T1_sienax.txt ] ; then
+    result=`cat $baseT1/T1_sienax/T1_sienax.txt` 
+fi
+
+mkdir -p IDP_files
+
+echo $result > IDP_files/$scriptName.txt
+echo $result
+
+cd $origDir
+
+
